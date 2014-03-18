@@ -31,7 +31,7 @@ func (q *Queue) Size() int {
 func (q *Queue) Deliver() (err error) {
 	// Apostle must be configured with a domain key
 	if len(conf.DomainKey) == 0 {
-		return fmt.Errorf("No DomainKey is set. Provide one via ENV['APOSTLE_DOMAIN_KEY'], or call apostle.SetDomainKey()")
+		return NoDomainKeyError{}
 	}
 
 	payload, err := json.Marshal(q)
