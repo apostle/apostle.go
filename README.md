@@ -89,9 +89,9 @@ You can check the type of error like so:
 ```go
 err := NewMail(someTemplateVar, someEmailVar)
 if err != nil{
-	if _, ok = err.(NoEmailError); ok {
+	if _, ok = err.(apostle.NoEmailError); ok {
 		// Email error
-	}else if _, ok = err.(NoTemplateError); ok {
+	}else if _, ok = err.(apostle.NoTemplateError); ok {
 		// Template error
 	}
 }
