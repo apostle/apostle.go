@@ -3,7 +3,6 @@ package apostle
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -48,7 +47,7 @@ func (q *Queue) Deliver() (err error) {
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Apostle-Client", "Go/"+conf.Version)
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", conf.DomainKey))
+	req.Header.Set("Authorization", "Bearer "+conf.DomainKey)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
