@@ -3,12 +3,15 @@ package apostle
 import "os"
 
 type config struct {
-	DomainKey    string
 	DeliveryHost string
+	DomainKey    string
+	Version      string
 }
 
 func loadConfig() (c *config) {
-	c = &config{}
+	c = &config{
+		Version: "1.0.0",
+	}
 	if deliveryHost := os.Getenv("APOSTLE_DELIVERY_HOST"); len(deliveryHost) != 0 {
 		c.DeliveryHost = deliveryHost
 	} else {
